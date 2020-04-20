@@ -21,20 +21,28 @@ import androidx.databinding.DataBindingUtil
 
 class MainActivity : AppCompatActivity() {
 
+    // Binding object for MainActivity.
+    // Name of the object is derived from the name of the activity or fragment.
     private lateinit var binding: ActivityMainBinding
 
+    // Instance of MyName data class.
     private  val myName: MyName = MyName("Mikhail Lashkin")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
+        // Setting the content view using DataBindingUtil creates an instance of
+        // ActivityMainBinding from the supplied activity and the supplied layout. This object
+        // contains mappings between the activity and layout,
+        // and functionality to interact with them.
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        // Set the value of the myName variable that is declared and used in the layout file.
         binding.myName = myName
 
        // findViewById<Button>(R.id.done_button).setOnClickListener {
        //     addNickname(it)
        //}
+        // Click listener for the Done button.
        binding.doneButton.setOnClickListener {
        addNickname(it)
        }
